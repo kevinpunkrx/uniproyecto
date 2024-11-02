@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te Amo, Jaz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            animation: gradient 15s ease infinite;
+            overflow: hidden;
+        }
+
+        @keyframes gradient {
+            0% { background: linear-gradient(135deg, #ffafbd, #ffc3a0); }
+            50% { background: linear-gradient(135deg, #ffc3a0, #ffafbd); }
+            100% { background: linear-gradient(135deg, #ffafbd, #ffc3a0); }
+        }
+
+        .container {
+            text-align: center;
+            color: #14a360;
+            max-width: 600px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .container:hover {
+            transform: scale(1.03);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeIn 2s;
+            font-weight: bold;
+            color: #28d174;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+.image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 40px 0 20px 0; /* Agrega un margen superior de 40px */
+    border-radius: 15px;
+    transition: opacity 1s, transform 0.5s;
+    opacity: 0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    transform: translateY(20px);
+}
+
+
+        .image.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+.text {
+    font-size: 1.5rem;
+    margin: 10px 0 20px 0; /* Ajusta el margen inferior para que esté más cerca de la imagen */
+    opacity: 0;
+    transition: opacity 1s;
+    color: #1ada8a;
+    line-height: 1.5;
+}
+
+
+        .text.visible {
+            opacity: 1;
+        }
+
+ .button {
+    padding: 12px 25px;
+    font-size: 1.5rem;
+    color: #fff;
+    background: #ff6f91;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    margin-top: 20px; /* Ajusta el margen superior para que esté más cerca de la imagen */
+}
+
+
+        .button:hover {
+            background-color: #ff4a78;
+            transform: translateY(-2px);
+        }
+
+        .final-message {
+            display: none;
+            font-size: 1.2rem;
+            margin: 20px;
+            color: #32bb26;
+            line-height: 1.5;
+            animation: fadeIn 2s;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+.photo-container {
+    display: none;
+    margin-top: 10px; /* Ajusta el margen superior para que esté más cerca del texto */
+}
+
+
+        .photo-container img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            margin-top: -50px; /* Move photo up */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Floating hearts */
+        .heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            transform: rotate(-45deg);
+            animation: float 5s infinite;
+        }
+
+        .heart::before, .heart::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -15px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 15px;
+            top: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(1) rotate(-45deg);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(-100px) scale(1.2) rotate(-45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0) scale(1) rotate(-45deg);
+                opacity: 0.7;
+            }
+        }
+
+        /* Randomly place hearts */
+        .heart:nth-child(1) { left: 20%; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 40%; animation-delay: 1s; }
+        .heart:nth-child(3) { left: 60%; animation-delay: 2s; }
+        .heart:nth-child(4) { left: 80%; animation-delay: 3s; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 id="mainMessage">Te Amo, Jaz</h1>
+    <img id="image" class="image" src="" alt="Imagen sorpresa">
+    <p id="imageText" class="text"></p>
+    <button id="nextButton" class="button">Siguiente</button>
+    <div id="finalMessage" class="final-message">
+        Te amo mucho a pesar de todo ❤️. Te hago renegar 😅. Simplemente te puedo decir que te amo, perdón por ser a veces muy descuidado. Sé que mayormente hago estas cosas para disculparme, pero esta vez no es así. 
+        <br><br>Este es un pequeño detalle que quería darte aunque sea algo sencillo, lo hice con mucho amor. Espero que ya no reniegues 😊. Te amo con todo mi corazón.
+        <br><br>Atentamente, tu amorcito.
+    </div>
+    <div class="photo-container" id="photoContainer">
+        <img src="images/foto1.jpg" alt="Nuestra foto">
+    </div>
+</div>
+
+<!-- Floating hearts -->
+<div class="heart"></div>
+<div class="heart"></div>
+<div class="heart"></div>
+<div class="heart"></div>
+
+<script>
+    const images = [
+        { src: './images/2.jpg', text: "Siempre tan linda 😍😍" },
+        { src: './images/3.jpg', text: "Eres la chica más linda del mundo 🌍🥰" },
+        { src: './images/4.jpg', text: "La ingeniera Uuuu 😎" },
+        { src: './images/5.jpg', text: "Muy fotogénica y muy coqueta 😘📸" }
+    ];
+
+    let currentIndex = 0;
+    const imageElement = document.getElementById('image');
+    const imageText = document.getElementById('imageText');
+    const nextButton = document.getElementById('nextButton');
+    const finalMessage = document.getElementById('finalMessage');
+    const photoContainer = document.getElementById('photoContainer');
+    
+    nextButton.addEventListener('click', () => {
+        if (currentIndex < images.length) {
+            imageElement.src = images[currentIndex].src;
+            imageText.textContent = images[currentIndex].text;
+            imageElement.classList.add('visible');
+            imageText.classList.add('visible');
+            currentIndex++;
+        } else {
+            imageElement.classList.remove('visible');
+            imageText.classList.remove('visible');
+            nextButton.style.display = 'none';
+            finalMessage.style.display = 'block';
+            photoContainer.style.display = 'block';
+        }
+    });
+</script>
+
+</body>
+</html>
